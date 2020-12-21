@@ -5,12 +5,21 @@ class RecordingsController < ApplicationController
   # GET /recordings.json
   def index
     @recordings = Recording.all
+    #gives us access to our html and json data 
+    respond_to do |f|
+      f.html {render :index}
+      f.json {render json: @recordings}
+    end
   end
 
   # GET /recordings/1
   # GET /recordings/1.json
   def show
     set_recording
+    respond_to do |f|
+      f.html {render :index}
+      f.json {render json: @recordings}
+    ends
   end
 
   # GET /recordings/new

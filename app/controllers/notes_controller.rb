@@ -4,13 +4,18 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
+    @notes = Note.all.includes(:recording)
+    respond_to do |f|
+      f.html {render :index}
+      f.json {render json: @recordings}
+    end
   end
 
   # GET /notes/1
   # GET /notes/1.json
   def show
     set_note
+    @note = Note.all.includes(:recording)
   end
 
   # GET /notes/new
@@ -70,6 +75,6 @@ class NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:source_id, :pitch)
+      params.require(:note).permit(:recording_id, :pitch)
     end
 end
