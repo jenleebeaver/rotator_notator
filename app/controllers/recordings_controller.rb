@@ -19,7 +19,7 @@ class RecordingsController < ApplicationController
     respond_to do |f|
       f.html {render :index}
       f.json {render json: @recordings}
-    ends
+    end
   end
 
   # GET /recordings/new
