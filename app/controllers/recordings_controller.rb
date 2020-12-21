@@ -10,6 +10,7 @@ class RecordingsController < ApplicationController
   # GET /recordings/1
   # GET /recordings/1.json
   def show
+    set_recording
   end
 
   # GET /recordings/new
@@ -64,7 +65,7 @@ class RecordingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_recording
-      @recording = Recording.find(params[:id])
+      @recording = Recording.find_by(:id => params[:id])
     end
 
     # Only allow a list of trusted parameters through.
