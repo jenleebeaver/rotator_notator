@@ -16,6 +16,10 @@ class NotesController < ApplicationController
   def show
     set_note
     @note = Note.all.includes(:recording)
+    respond_to do |f|
+      f.html {render :index}
+      f.json {render json: @notes}
+    end
   end
 
   # GET /notes/new

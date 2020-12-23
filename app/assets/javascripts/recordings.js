@@ -6,11 +6,13 @@ $(function () {
 
 function listenForClick() {
 	$('button#recordings-data').on('click', function (event) {
+        //prevents button from clicking itself
 		event.preventDefault()
 		getRecordings()
 	})
 }
 
+//creating listeners 
 function getRecordings() {
 	$.ajax({
 		url: 'http://localhost:3000/recordings',
@@ -37,6 +39,7 @@ function listenForNewRecordingFormClick() {
 }
 
 //class constructor takes in object with key values pairs that are matched up to create an instance of a recording 
+//This allows us to create instances of recording in custom functions
 class Recording {
 	constructor(obj) {
 		this.id = obj.id
@@ -45,6 +48,7 @@ class Recording {
 		this.notes = obj.notes
 	}
 
+    //class method
 	static newRecordingForm() {
 		return (`
 		<strong>New recording melody form</strong>
@@ -60,15 +64,18 @@ class Recording {
 //custom function that creates HTML made up of the constructor 
 Recording.prototype.recordingHTML = function () {
 	let recordingMelodies = this.melodys.map(melody => {
-		return (`
-			<p>${recording.melody}</p>
+        return (`
+        <div>
+            <h3>${recording.title}</h3>
+            <p>${recording.melody}</p>
+        </div>
 		`)
 	}).join('')
 
 	return (`	
 		<div class='post'>
 			<h3>${this.title}</h3>
-			<p>${this.melodt}</p>
+			<p>${this.melody}</p>
 			<p>${recordingMelodys}</p>
 		</div>
 	`)
