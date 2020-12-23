@@ -1,3 +1,4 @@
+function loads when page loads 
 $(function () {
 	console.log('recordings.js is loaded ...')
 	listenForClick()

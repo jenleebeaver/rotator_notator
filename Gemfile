@@ -6,6 +6,7 @@ gem 'jquery-rails'
 
 #this will give us all of our associated data in the json  
 gem 'active_model_serializers', '~> 0.10.0'
+gem "bulma-rails", "~> 0.7.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
